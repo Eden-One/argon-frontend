@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { LanguageSwitch } from "@/components/LanguageSwitch";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   LayoutDashboard,
   Users,
@@ -239,6 +241,9 @@ export const DashboardLayout = ({ children, userRole }: DashboardLayoutProps) =>
 
             {/* Right side actions */}
             <div className="flex items-center gap-3">
+              {/* Language Switch */}
+              <LanguageSwitch />
+
               {/* Notifications */}
               <Button variant="ghost" size="icon" className="relative">
                 <Bell size={20} />

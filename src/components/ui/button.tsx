@@ -19,6 +19,7 @@ const buttonVariants = cva(
         gradientSecondary: "bg-gradient-secondary text-secondary-foreground shadow-lg hover:shadow-xl hover:shadow-secondary/25 border-0",
         success: "bg-success text-success-foreground hover:bg-success/90 shadow-md",
         warning: "bg-warning text-warning-foreground hover:bg-warning/90 shadow-md",
+        danger: "bg-danger text-danger-foreground hover:bg-danger/90 shadow-md",
         glass: "glass border border-border/50 text-foreground hover:bg-card/80 shadow-sm",
       },
       size: {

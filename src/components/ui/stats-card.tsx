@@ -1,18 +1,19 @@
+import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { LucideIcon } from "lucide-react";
 
 interface StatsCardProps {
   title: string;
   value: string | number;
   description?: string;
-  icon: LucideIcon;
+  icon: ReactNode;
   trend?: {
     value: number;
-    positive: boolean;
+    positive?: boolean;
+    isPositive?: boolean;
   };
-  variant?: "default" | "primary" | "secondary" | "success" | "warning";
+  variant?: "default" | "primary" | "secondary" | "success" | "warning" | "info" | "danger";
   className?: string;
 }
 
@@ -22,6 +23,8 @@ const variantStyles = {
   secondary: "bg-gradient-secondary text-secondary-foreground",
   success: "bg-gradient-success text-success-foreground",
   warning: "bg-warning/10 border-warning/20",
+  info: "bg-info/10 border-info/20",
+  danger: "bg-danger/10 border-danger/20",
 };
 
 const iconContainerStyles = {
@@ -30,17 +33,21 @@ const iconContainerStyles = {
   secondary: "bg-secondary-foreground/20 text-secondary-foreground",
   success: "bg-success-foreground/20 text-success-foreground",
   warning: "bg-warning/20 text-warning",
+  info: "bg-info/20 text-info",
+  danger: "bg-danger/20 text-danger",
 };
 
 export const StatsCard = ({
   title,
   value,
   description,
-  icon: Icon,
+  icon,
   trend,
   variant = "default",
   className,
 }: StatsCardProps) => {
+  const isPositive = trend?.positive ?? trend?.isPositive ?? false;
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -72,9 +79,9 @@ export const StatsCard = ({
             {trend && (
               <div className={cn(
                 "flex items-center gap-1 text-xs font-medium",
-                trend.positive ? "text-success" : "text-danger"
+                isPositive ? "text-success" : "text-danger"
               )}>
-                <span>{trend.positive ? "↑" : "↓"}</span>
+                <span>{isPositive ? "↑" : "↓"}</span>
                 <span>{Math.abs(trend.value)}%</span>
                 <span className="opacity-60">vs mois dernier</span>
               </div>
@@ -84,7 +91,7 @@ export const StatsCard = ({
             "p-3 rounded-xl",
             iconContainerStyles[variant]
           )}>
-            <Icon className="w-6 h-6" />
+            {icon}
           </div>
         </div>
       </Card>

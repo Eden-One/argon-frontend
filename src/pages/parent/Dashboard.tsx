@@ -77,7 +77,7 @@ const ParentDashboard = () => {
             title="Taux de présence"
             value="94%"
             description="Ce mois-ci"
-            icon={ClipboardCheck}
+            icon={<ClipboardCheck size={24} />}
             trend={{ value: 2, positive: true }}
             variant="primary"
           />
@@ -85,21 +85,21 @@ const ParentDashboard = () => {
             title="Moyenne générale"
             value={`${moyenneGenerale}/20`}
             description="1er trimestre"
-            icon={GraduationCap}
+            icon={<GraduationCap size={24} />}
             trend={{ value: 5, positive: true }}
           />
           <StatsCard
             title="Devoirs en cours"
             value={devoirsEnCours.length}
             description="À rendre cette semaine"
-            icon={BookOpen}
+            icon={<BookOpen size={24} />}
             variant="secondary"
           />
           <StatsCard
             title="Messages non lus"
             value="2"
             description="De vos enseignants"
-            icon={MessageSquare}
+            icon={<MessageSquare size={24} />}
           />
         </motion.div>
 
