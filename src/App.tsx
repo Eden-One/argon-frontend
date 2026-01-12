@@ -10,7 +10,24 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ParentDashboard from "./pages/parent/Dashboard";
 import TeacherDashboard from "./pages/teacher/Dashboard";
+
+// Admin pages
 import AdminDashboard from "./pages/admin/Dashboard";
+import AdminClasses from "./pages/admin/Classes";
+import AdminEnseignants from "./pages/admin/Enseignants";
+import AdminParents from "./pages/admin/Parents";
+import AdminEleves from "./pages/admin/Eleves";
+import AdminPresence from "./pages/admin/Presence";
+import AdminDevoirs from "./pages/admin/Devoirs";
+import AdminNotes from "./pages/admin/Notes";
+import AdminAnnonces from "./pages/admin/Annonces";
+import AdminGalerie from "./pages/admin/Galerie";
+import AdminAutorisations from "./pages/admin/Autorisations";
+import AdminCalendrier from "./pages/admin/Calendrier";
+import AdminRapports from "./pages/admin/Rapports";
+import AdminParametres from "./pages/admin/Parametres";
+
+// SuperAdmin pages
 import SuperAdminDashboard from "./pages/superadmin/Dashboard";
 import Etablissements from "./pages/superadmin/Etablissements";
 import Administrateurs from "./pages/superadmin/Administrateurs";
@@ -36,12 +53,33 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/connexion" element={<Login />} />
             <Route path="/inscription" element={<Register />} />
+            
+            {/* Parent routes */}
             <Route path="/parent/dashboard" element={<ParentDashboard />} />
             <Route path="/parent/*" element={<ParentDashboard />} />
+            
+            {/* Teacher routes */}
             <Route path="/enseignant/dashboard" element={<TeacherDashboard />} />
             <Route path="/enseignant/*" element={<TeacherDashboard />} />
+            
+            {/* Admin routes */}
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/classes" element={<AdminClasses />} />
+            <Route path="/admin/enseignants" element={<AdminEnseignants />} />
+            <Route path="/admin/parents" element={<AdminParents />} />
+            <Route path="/admin/eleves" element={<AdminEleves />} />
+            <Route path="/admin/presence" element={<AdminPresence />} />
+            <Route path="/admin/devoirs" element={<AdminDevoirs />} />
+            <Route path="/admin/notes" element={<AdminNotes />} />
+            <Route path="/admin/annonces" element={<AdminAnnonces />} />
+            <Route path="/admin/galerie" element={<AdminGalerie />} />
+            <Route path="/admin/autorisations" element={<AdminAutorisations />} />
+            <Route path="/admin/calendrier" element={<AdminCalendrier />} />
+            <Route path="/admin/rapports" element={<AdminRapports />} />
+            <Route path="/admin/parametres" element={<AdminParametres />} />
             <Route path="/admin/*" element={<AdminDashboard />} />
+            
+            {/* SuperAdmin routes */}
             <Route path="/superadmin/dashboard" element={<SuperAdminDashboard />} />
             <Route path="/superadmin/etablissements" element={<Etablissements />} />
             <Route path="/superadmin/administrateurs" element={<Administrateurs />} />
@@ -54,6 +92,7 @@ const App = () => (
             <Route path="/superadmin/parametres" element={<Parametres />} />
             <Route path="/superadmin/support" element={<Support />} />
             <Route path="/superadmin/*" element={<SuperAdminDashboard />} />
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
