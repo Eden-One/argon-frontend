@@ -70,11 +70,11 @@ export const presenceParClasse = [
 ];
 
 export const devoirsData = [
-  { id: "d1", titre: "Exercices de géométrie", classe: "6ème A", matiere: "Mathématiques", enseignant: "M. Diallo", dateLimite: "2024-01-20", statut: "en_cours", description: "Faire les exercices 1 à 5 page 42 du manuel", fichier: null },
-  { id: "d2", titre: "Rédaction : Mon village", classe: "6ème B", matiere: "Français", enseignant: "Mme. Koné", dateLimite: "2024-01-18", statut: "termine", description: "Écrire une rédaction de 200 mots minimum", fichier: "consignes.pdf" },
-  { id: "d3", titre: "Révision chapitre 3", classe: "5ème A", matiere: "Histoire-Géographie", enseignant: "M. Traoré", dateLimite: "2024-01-22", statut: "nouveau", description: "Réviser le chapitre sur les grandes découvertes", fichier: null },
-  { id: "d4", titre: "Vocabulary Unit 5", classe: "4ème A", matiere: "Anglais", enseignant: "Mme. Ba", dateLimite: "2024-01-19", statut: "en_cours", description: "Learn vocabulary words from unit 5", fichier: "vocab_list.pdf" },
-  { id: "d5", titre: "TP Chimie", classe: "3ème A", matiere: "Sciences Physiques", enseignant: "M. Ndiaye", dateLimite: "2024-01-25", statut: "nouveau", description: "Préparer le compte rendu du TP", fichier: null },
+  { id: "d1", titre: "Exercices de géométrie", classe: "6ème A", matiere: "Mathématiques", enseignant: "M. Diallo", dateLimite: "2024-01-20", statut: "en_cours", description: "Faire les exercices 1 à 5 page 42 du manuel", fichier: null, fichierJoint: null },
+  { id: "d2", titre: "Rédaction : Mon village", classe: "6ème B", matiere: "Français", enseignant: "Mme. Koné", dateLimite: "2024-01-18", statut: "termine", description: "Écrire une rédaction de 200 mots minimum", fichier: "consignes.pdf", fichierJoint: "consignes.pdf" },
+  { id: "d3", titre: "Révision chapitre 3", classe: "5ème A", matiere: "Histoire-Géographie", enseignant: "M. Traoré", dateLimite: "2024-01-22", statut: "nouveau", description: "Réviser le chapitre sur les grandes découvertes", fichier: null, fichierJoint: null },
+  { id: "d4", titre: "Vocabulary Unit 5", classe: "4ème A", matiere: "Anglais", enseignant: "Mme. Ba", dateLimite: "2024-01-19", statut: "en_cours", description: "Learn vocabulary words from unit 5", fichier: "vocab_list.pdf", fichierJoint: "vocab_list.pdf" },
+  { id: "d5", titre: "TP Chimie", classe: "3ème A", matiere: "Sciences Physiques", enseignant: "M. Ndiaye", dateLimite: "2024-01-25", statut: "nouveau", description: "Préparer le compte rendu du TP", fichier: null, fichierJoint: null },
 ];
 
 export const notesData = [
@@ -94,36 +94,35 @@ export const annoncesData = [
 ];
 
 export const galerieData = [
-  { id: "g1", titre: "Cours de sciences", description: "Expérience de chimie en classe", url: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400", date: "2024-01-12", classe: "6ème A", album: "Sciences" },
-  { id: "g2", titre: "Match de football", description: "Tournoi inter-classes", url: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400", date: "2024-01-10", classe: "Tous", album: "Sport" },
-  { id: "g3", titre: "Atelier d'art", description: "Création de masques africains", url: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400", date: "2024-01-08", classe: "6ème A", album: "Arts" },
-  { id: "g4", titre: "Cérémonie de remise des prix", description: "Prix d'excellence T1", url: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400", date: "2024-01-05", classe: "Tous", album: "Événements" },
-  { id: "g5", titre: "Club de lecture", description: "Session hebdomadaire", url: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400", date: "2024-01-14", classe: "5ème A", album: "Club" },
-  { id: "g6", titre: "Cours de musique", description: "Apprentissage du djembé", url: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400", date: "2024-01-13", classe: "4ème B", album: "Arts" },
+  { id: "g1", titre: "Cours de sciences", description: "Expérience de chimie en classe", url: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400", date: "2024-01-12", classe: "6ème A", album: "Sciences", nombrePhotos: 12, nombreVideos: 2, statut: "publie" },
+  { id: "g2", titre: "Match de football", description: "Tournoi inter-classes", url: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400", date: "2024-01-10", classe: "Tous", album: "Sport", nombrePhotos: 25, nombreVideos: 5, statut: "publie" },
+  { id: "g3", titre: "Atelier d'art", description: "Création de masques africains", url: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400", date: "2024-01-08", classe: "6ème A", album: "Arts", nombrePhotos: 18, nombreVideos: 0, statut: "publie" },
+  { id: "g4", titre: "Cérémonie de remise des prix", description: "Prix d'excellence T1", url: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400", date: "2024-01-05", classe: "Tous", album: "Événements", nombrePhotos: 35, nombreVideos: 3, statut: "publie" },
+  { id: "g5", titre: "Club de lecture", description: "Session hebdomadaire", url: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400", date: "2024-01-14", classe: "5ème A", album: "Club", nombrePhotos: 8, nombreVideos: 1, statut: "en_attente" },
+  { id: "g6", titre: "Cours de musique", description: "Apprentissage du djembé", url: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400", date: "2024-01-13", classe: "4ème B", album: "Arts", nombrePhotos: 15, nombreVideos: 2, statut: "publie" },
 ];
 
 export const autorisationsData = [
-  { id: "au1", eleveId: "e1", eleveName: "Aminata Diop", classe: "6ème A", personneAutorisee: "Fatou Diop", lien: "Tante", telephone: "+221 77 888 99 00", photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=FatouD", type: "permanent", validite: "Permanente", statut: "actif" },
-  { id: "au2", eleveId: "e1", eleveName: "Aminata Diop", classe: "6ème A", personneAutorisee: "Ousmane Diop", lien: "Oncle", telephone: "+221 76 777 88 99", photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ousmane", type: "temporaire", validite: "15-20 Jan 2024", statut: "actif" },
-  { id: "au3", eleveId: "e2", eleveName: "Ibrahim Koné", classe: "6ème A", personneAutorisee: "Mariam Koné", lien: "Grand-mère", telephone: "+225 07 111 22 33", photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=MariamK", type: "permanent", validite: "Permanente", statut: "actif" },
-  { id: "au4", eleveId: "e5", eleveName: "Moussa Ba", classe: "5ème A", personneAutorisee: "Samba Ba", lien: "Grand-père", telephone: "+241 06 222 33 44", photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=SambaB", type: "permanent", validite: "Permanente", statut: "inactif" },
+  { id: "au1", eleveId: "e1", eleveName: "Aminata Diop", eleve: "Aminata Diop", classe: "6ème A", personneAutorisee: "Fatou Diop", lien: "Tante", relation: "Tante", telephone: "+221 77 888 99 00", photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=FatouD", type: "permanent", validite: "Permanente", dateDebut: "2024-01-01", dateFin: "2024-12-31", statut: "actif" },
+  { id: "au2", eleveId: "e1", eleveName: "Aminata Diop", eleve: "Aminata Diop", classe: "6ème A", personneAutorisee: "Ousmane Diop", lien: "Oncle", relation: "Oncle", telephone: "+221 76 777 88 99", photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ousmane", type: "temporaire", validite: "15-20 Jan 2024", dateDebut: "2024-01-15", dateFin: "2024-01-20", statut: "actif" },
+  { id: "au3", eleveId: "e2", eleveName: "Ibrahim Koné", eleve: "Ibrahim Koné", classe: "6ème A", personneAutorisee: "Mariam Koné", lien: "Grand-mère", relation: "Grand-mère", telephone: "+225 07 111 22 33", photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=MariamK", type: "permanent", validite: "Permanente", dateDebut: "2024-01-01", dateFin: "2024-12-31", statut: "actif" },
+  { id: "au4", eleveId: "e5", eleveName: "Moussa Ba", eleve: "Moussa Ba", classe: "5ème A", personneAutorisee: "Samba Ba", lien: "Grand-père", relation: "Grand-père", telephone: "+241 06 222 33 44", photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=SambaB", type: "permanent", validite: "Permanente", dateDebut: "2024-01-01", dateFin: "2024-12-31", statut: "inactif" },
 ];
 
 export const historiqueRetraitsData = [
-  { id: "hr1", eleveId: "e1", eleveName: "Aminata Diop", personneAutorisee: "Fatou Diop", lien: "Tante", date: "2024-01-17T16:30:00", verifiePar: "M. Diallo", methode: "QR Code" },
-  { id: "hr2", eleveId: "e2", eleveName: "Ibrahim Koné", personneAutorisee: "Mariam Koné", lien: "Grand-mère", date: "2024-01-17T16:45:00", verifiePar: "Mme. Koné", methode: "Photo ID" },
-  { id: "hr3", eleveId: "e1", eleveName: "Aminata Diop", personneAutorisee: "Ousmane Diop", lien: "Oncle", date: "2024-01-16T17:00:00", verifiePar: "Mme. Ba", methode: "QR Code" },
+  { id: "hr1", eleveId: "e1", eleveName: "Aminata Diop", eleve: "Aminata Diop", personneAutorisee: "Fatou Diop", retirePar: "Fatou Diop", lien: "Tante", relation: "Tante", date: "2024-01-17T16:30:00", heure: "16:30", verifiePar: "M. Diallo", validePar: "M. Diallo", methode: "QR Code" },
+  { id: "hr2", eleveId: "e2", eleveName: "Ibrahim Koné", eleve: "Ibrahim Koné", personneAutorisee: "Mariam Koné", retirePar: "Mariam Koné", lien: "Grand-mère", relation: "Grand-mère", date: "2024-01-17T16:45:00", heure: "16:45", verifiePar: "Mme. Koné", validePar: "Mme. Koné", methode: "Photo ID" },
+  { id: "hr3", eleveId: "e1", eleveName: "Aminata Diop", eleve: "Aminata Diop", personneAutorisee: "Ousmane Diop", retirePar: "Ousmane Diop", lien: "Oncle", relation: "Oncle", date: "2024-01-16T17:00:00", heure: "17:00", verifiePar: "Mme. Ba", validePar: "Mme. Ba", methode: "QR Code" },
 ];
 
 export const calendrierData = [
-  { id: "c1", titre: "Examen de mathématiques", date: "2024-01-25", type: "examen", classe: "6ème A", couleur: "#EF4444" },
-  { id: "c2", titre: "Réunion parents-professeurs", date: "2024-01-27", type: "reunion", classe: "tous", couleur: "#3B82F6" },
-  { id: "c3", titre: "Sortie Musée", date: "2024-01-25", type: "sortie", classe: "6eme", couleur: "#10B981" },
-  { id: "c4", titre: "Début vacances février", date: "2024-02-17", type: "vacances", classe: "tous", couleur: "#F59E0B" },
-  { id: "c5", titre: "Fin vacances février", date: "2024-02-25", type: "vacances", classe: "tous", couleur: "#F59E0B" },
-  { id: "c6", titre: "Conseil de classe T1", date: "2024-02-02", type: "reunion", classe: "6ème A", couleur: "#3B82F6" },
-  { id: "c7", titre: "Compétition sportive", date: "2024-01-30", type: "evenement", classe: "tous", couleur: "#8B5CF6" },
-  { id: "c8", titre: "Fête de l'école", date: "2024-03-15", type: "evenement", classe: "tous", couleur: "#8B5CF6" },
+  { id: "c1", titre: "Examen de mathématiques", date: "2024-01-25", dateDebut: "2024-01-25", dateFin: "2024-01-25", type: "examen", classe: "6ème A", couleur: "#EF4444" },
+  { id: "c2", titre: "Réunion parents-professeurs", date: "2024-01-27", dateDebut: "2024-01-27", dateFin: "2024-01-27", type: "reunion", classe: "tous", couleur: "#3B82F6" },
+  { id: "c3", titre: "Sortie Musée", date: "2024-01-25", dateDebut: "2024-01-25", dateFin: "2024-01-25", type: "sortie", classe: "6eme", couleur: "#10B981" },
+  { id: "c4", titre: "Vacances février", date: "2024-02-17", dateDebut: "2024-02-17", dateFin: "2024-02-25", type: "vacances", classe: "tous", couleur: "#F59E0B" },
+  { id: "c5", titre: "Conseil de classe T1", date: "2024-02-02", dateDebut: "2024-02-02", dateFin: "2024-02-02", type: "reunion", classe: "6ème A", couleur: "#3B82F6" },
+  { id: "c6", titre: "Compétition sportive", date: "2024-01-30", dateDebut: "2024-01-30", dateFin: "2024-01-30", type: "evenement", classe: "tous", couleur: "#8B5CF6" },
+  { id: "c7", titre: "Fête de l'école", date: "2024-03-15", dateDebut: "2024-03-15", dateFin: "2024-03-15", type: "evenement", classe: "tous", couleur: "#8B5CF6" },
 ];
 
 export const repartitionParNiveau = [
