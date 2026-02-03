@@ -4,194 +4,269 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Eye, EyeOff, Mail, Lock, ArrowRight, GraduationCap, Users, School } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, ArrowRight, CheckCircle2 } from "lucide-react";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userType, setUserType] = useState<"parent" | "enseignant" | "admin">("parent");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate login - redirect based on user type
-    navigate(`/${userType}/dashboard`);
+    setIsLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      navigate("/parent/dashboard");
+      setIsLoading(false);
+    }, 500);
   };
 
-  const userTypes = [
-    { id: "parent", label: "Parent", icon: Users, description: "Suivez la scolarité de vos enfants" },
-    { id: "enseignant", label: "Enseignant", icon: GraduationCap, description: "Gérez vos classes et élèves" },
-    { id: "admin", label: "Admin", icon: School, description: "Administrez l'établissement" },
-  ];
-
   return (
-    <div className="min-h-screen bg-background flex">
-      {/* Left side - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\");" }} />
-        
-        <div className="relative z-10 flex flex-col justify-center p-12 text-primary-foreground">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex">
+      {/* Left side - Branding & Benefits */}
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 relative overflow-hidden flex-col justify-between p-12">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-10 w-40 h-40 bg-blue-400 rounded-full blur-3xl opacity-20 animate-pulse" />
+          <div className="absolute bottom-10 right-20 w-64 h-64 bg-purple-400 rounded-full blur-3xl opacity-20 animate-pulse" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-1/2 -right-32 w-96 h-96 bg-indigo-400 rounded-full blur-3xl opacity-10" />
+        </div>
+
+        <div className="relative z-10">
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3 mb-16"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center border border-white/30">
+              <span className="text-white font-display font-bold text-2xl">A</span>
+            </div>
+            <span className="font-display text-3xl font-bold text-white">ARGON</span>
+          </motion.div>
+
+          {/* Main heading */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-14 h-14 rounded-2xl bg-primary-foreground/20 backdrop-blur flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-3xl">A</span>
-              </div>
-              <span className="font-display text-4xl font-bold">ARGON</span>
-            </div>
-
-            <h1 className="font-display text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              La plateforme qui<br />
-              <span className="text-secondary-light">connecte l'école</span><br />
-              aux familles
+            <h1 className="font-display text-5xl font-bold text-white mb-6 leading-tight">
+              Bienvenue sur <br />
+              <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">ARGON</span>
             </h1>
-
-            <p className="text-lg text-primary-foreground/80 max-w-md mb-8">
-              Suivez en temps réel la vie scolaire de vos enfants. Notes, présences, 
-              devoirs et communication avec les enseignants, tout en un seul endroit.
+            <p className="text-lg text-blue-100 max-w-md mb-12">
+              Connectez-vous pour suivre la scolarité de vos enfants, communiquer avec les enseignants et rester informé en temps réel.
             </p>
+          </motion.div>
 
-            <div className="flex items-center gap-6">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full bg-primary-foreground/20 border-2 border-primary-foreground/30 flex items-center justify-center"
-                  >
-                    <span className="text-xs font-medium">{i}</span>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <p className="font-semibold">+10,000 familles</p>
-                <p className="text-sm text-primary-foreground/70">nous font confiance</p>
-              </div>
-            </div>
+          {/* Features list */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-4"
+          >
+            {[
+              { title: "Suivi en temps réel", desc: "Notes et présences mises à jour instantanément" },
+              { title: "Communication directe", desc: "Messagerie avec les enseignants" },
+              { title: "Accès sécurisé", desc: "Données cryptées et protégées" },
+            ].map((feature, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 + idx * 0.1 }}
+                className="flex items-start gap-3 text-white group"
+              >
+                <div className="w-6 h-6 rounded-full bg-green-400 flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-transform">
+                  <CheckCircle2 className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <p className="font-semibold text-white">{feature.title}</p>
+                  <p className="text-sm text-blue-100">{feature.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
 
-        {/* Decorative elements */}
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/20 rounded-full blur-3xl" />
-        <div className="absolute top-20 right-20 w-64 h-64 bg-primary-foreground/10 rounded-full blur-2xl" />
+        {/* Trust indicators */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="relative z-10 pt-8 border-t border-white/20"
+        >
+          <p className="text-white font-semibold mb-2">Rejoignez +10,000 familles</p>
+          <p className="text-blue-100 text-sm">qui font confiance à ARGON pour la gestion scolaire</p>
+        </motion.div>
       </div>
 
       {/* Right side - Login Form */}
-      <div className="flex-1 flex items-center justify-center p-6 lg:p-12">
+      <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full max-w-md"
+          className="w-full max-w-sm"
         >
           {/* Mobile logo */}
-          <div className="lg:hidden flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-2xl">A</span>
+          <div className="lg:hidden flex items-center gap-3 mb-10">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center">
+              <span className="text-white font-display font-bold text-2xl">A</span>
             </div>
             <span className="font-display text-3xl font-bold text-foreground">ARGON</span>
           </div>
 
-          <Card variant="flat" className="border-0 shadow-none">
-            <CardHeader className="space-y-1 px-0">
-              <CardTitle className="font-display text-2xl">Connexion</CardTitle>
-              <CardDescription>
-                Connectez-vous à votre compte pour continuer
-              </CardDescription>
-            </CardHeader>
+          {/* Form Container */}
+          <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-10 border border-gray-100">
+            {/* Header */}
+            <div className="mb-8">
+              <h2 className="text-3xl font-display font-bold text-gray-900 mb-2">Connexion</h2>
+              <p className="text-gray-600 text-sm">
+                Connectez-vous à votre compte pour accéder à votre espace
+              </p>
+            </div>
 
-            <CardContent className="px-0">
-              {/* User type selector */}
-              <div className="grid grid-cols-3 gap-3 mb-6">
-                {userTypes.map((type) => (
-                  <motion.button
-                    key={type.id}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => setUserType(type.id as typeof userType)}
-                    className={`p-4 rounded-xl border-2 transition-all duration-200 text-center ${
-                      userType === type.id
-                        ? "border-primary bg-primary/5"
-                        : "border-border hover:border-primary/50"
-                    }`}
-                  >
-                    <type.icon className={`w-6 h-6 mx-auto mb-2 ${
-                      userType === type.id ? "text-primary" : "text-muted-foreground"
-                    }`} />
-                    <span className={`text-sm font-medium ${
-                      userType === type.id ? "text-primary" : "text-muted-foreground"
-                    }`}>
-                      {type.label}
-                    </span>
-                  </motion.button>
-                ))}
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Email Field */}
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="space-y-2"
+              >
+                <Label htmlFor="email" className="text-sm font-semibold text-gray-700">
+                  Adresse email
+                </Label>
+                <div className="relative group">
                   <Input
                     id="email"
                     type="email"
-                    placeholder="votre@email.com"
+                    placeholder="exemple@ecole.fr"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    icon={<Mail size={18} />}
-                    inputSize="lg"
+                    required
+                    className="pl-10 h-11 bg-gray-50 border-gray-200 focus:bg-white focus:border-indigo-500 transition-colors"
                   />
+                  <Mail size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-indigo-500 transition-colors" />
                 </div>
+              </motion.div>
 
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor="password">Mot de passe</Label>
-                    <Link
-                      to="/mot-de-passe-oublie"
-                      className="text-sm text-primary hover:underline"
-                    >
-                      Mot de passe oublié ?
-                    </Link>
-                  </div>
-                  <div className="relative">
-                    <Input
-                      id="password"
-                      type={showPassword ? "text" : "password"}
-                      placeholder="••••••••"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      icon={<Lock size={18} />}
-                      inputSize="lg"
-                      className="pr-12"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                    </button>
-                  </div>
-                </div>
-
-                <Button type="submit" variant="gradient" size="lg" className="w-full">
-                  Se connecter
-                  <ArrowRight size={18} />
-                </Button>
-              </form>
-
-              <div className="mt-6 text-center">
-                <p className="text-sm text-muted-foreground">
-                  Pas encore de compte ?{" "}
-                  <Link to="/inscription" className="text-primary font-medium hover:underline">
-                    S'inscrire
+              {/* Password Field */}
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="space-y-2"
+              >
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="password" className="text-sm font-semibold text-gray-700">
+                    Mot de passe
+                  </Label>
+                  <Link
+                    to="/mot-de-passe-oublie"
+                    className="text-xs text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
+                  >
+                    Oublié ?
                   </Link>
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+                </div>
+                <div className="relative group">
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="pl-10 pr-10 h-11 bg-gray-50 border-gray-200 focus:bg-white focus:border-indigo-500 transition-colors"
+                  />
+                  <Lock size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-indigo-500 transition-colors" />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
+              </motion.div>
+
+              {/* Remember Me */}
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex items-center gap-2 pt-2"
+              >
+                <input
+                  type="checkbox"
+                  id="rememberMe"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  className="w-4 h-4 rounded border-gray-300 text-indigo-600 cursor-pointer accent-indigo-600"
+                />
+                <label htmlFor="rememberMe" className="text-sm text-gray-600 cursor-pointer font-medium">
+                  Se souvenir de moi
+                </label>
+              </motion.div>
+
+              {/* Submit Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="pt-4"
+              >
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full h-11 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50"
+                >
+                  {isLoading ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Connexion en cours...
+                    </>
+                  ) : (
+                    <>
+                      Se connecter
+                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </Button>
+              </motion.div>
+            </form>
+
+            {/* Footer */}
+            <div className="mt-8 pt-6 border-t border-gray-100">
+              <p className="text-center text-sm text-gray-600">
+                Vous avez besoin d'aide ? 
+                <a href="#" className="text-indigo-600 hover:text-indigo-700 font-medium ml-1">
+                  Contactez le support
+                </a>
+              </p>
+            </div>
+          </div>
+
+          {/* Security Note */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200 text-center"
+          >
+            <p className="text-sm text-green-700 flex items-center justify-center gap-2">
+              <CheckCircle2 size={16} />
+              Connexion sécurisée
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </div>

@@ -61,6 +61,7 @@ import Securite from "./pages/superadmin/Securite";
 import Logs from "./pages/superadmin/Logs";
 import Parametres from "./pages/superadmin/Parametres";
 import Support from "./pages/superadmin/Support";
+import ForgotPassword from "./pages/auth/ForgotPassword";
 
 const queryClient = new QueryClient();
 
@@ -75,7 +76,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/connexion" element={<Login />} />
             <Route path="/inscription" element={<Register />} />
-            
+            <Route path="/mot-de-passe-oublie" element={<ForgotPassword />} />
+
             {/* Parent routes */}
             <Route path="/parent/dashboard" element={<ParentDashboard />} />
             <Route path="/parent/enfants" element={<ParentEnfants />} />
