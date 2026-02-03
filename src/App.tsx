@@ -9,6 +9,16 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ParentDashboard from "./pages/parent/Dashboard";
+import ParentEnfants from "./pages/parent/Enfants";
+import ParentPresence from "./pages/parent/Presence";
+import ParentDevoirs from "./pages/parent/Devoirs";
+import ParentNotes from "./pages/parent/Notes";
+import ParentMessagerie from "./pages/parent/Messagerie";
+import ParentAnnonces from "./pages/parent/Annonces";
+import ParentGalerie from "./pages/parent/Galerie";
+import ParentAutorisations from "./pages/parent/Autorisations";
+import ParentCalendrier from "./pages/parent/Calendrier";
+import ParentParametres from "./pages/parent/Parametres";
 
 // Teacher pages
 import TeacherDashboard from "./pages/teacher/Dashboard";
@@ -68,6 +78,16 @@ const App = () => (
             
             {/* Parent routes */}
             <Route path="/parent/dashboard" element={<ParentDashboard />} />
+            <Route path="/parent/enfants" element={<ParentEnfants />} />
+            <Route path="/parent/presence" element={<ParentPresence />} />
+            <Route path="/parent/devoirs" element={<ParentDevoirs />} />
+            <Route path="/parent/notes" element={<ParentNotes />} />
+            <Route path="/parent/messagerie" element={<ParentMessagerie />} />
+            <Route path="/parent/annonces" element={<ParentAnnonces />} />
+            <Route path="/parent/galerie" element={<ParentGalerie />} />
+            <Route path="/parent/autorisations" element={<ParentAutorisations />} />
+            <Route path="/parent/calendrier" element={<ParentCalendrier />} />
+            <Route path="/parent/parametres" element={<ParentParametres />} />
             <Route path="/parent/*" element={<ParentDashboard />} />
             
             {/* Teacher routes */}
