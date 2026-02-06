@@ -171,7 +171,7 @@ const Login = () => {
                     Mot de passe
                   </Label>
                   <Link
-                    to="/enseignant/dashboard"
+                    to="/mot-de-passe-oublie"
                     className="text-xs text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
                   >
                     Oublié ?
